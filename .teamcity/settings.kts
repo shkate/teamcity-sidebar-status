@@ -28,6 +28,8 @@ version = "2019.1"
 
 project {
 
+    vcsRoot(HttpsGithubComShkateTeamcitySidebarStatusGitRefsHeadsMaster)
+
     buildType(SidebarStatus)
 }
 
@@ -36,6 +38,10 @@ object SidebarStatus : BuildType({
 
     params {
         param("shouldFail", "false")
+    }
+
+    vcs {
+        root(HttpsGithubComShkateTeamcitySidebarStatusGitRefsHeadsMaster)
     }
 
     steps {
@@ -52,4 +58,11 @@ object SidebarStatus : BuildType({
             """.trimIndent()
         }
     }
+})
+
+object HttpsGithubComShkateTeamcitySidebarStatusGitRefsHeadsMaster : GitVcsRoot({
+    name = "https://github.com/shkate/teamcity-sidebar-status.git#refs/heads/master"
+    url = "https://github.com/shkate/teamcity-sidebar-status.git"
+    branch = "refs/heads/release"
+    branchSpec = "+:refs/heads/*"
 })
